@@ -22,168 +22,149 @@
     <main>
       <h1>DomWork - Workers</h1>
       <form>
+        <fieldset>
+          <div class="form-group">
+            <label for="first-name">First Name:</label>
+            <input type="text" id="first-name" name="first-name" maxlength="30" required>
+          </div>  
+          <div class="form-group">
+            <label for="last-name">Last Name:</label>
+            <input type="text" id="last-name" name="last-name" maxlength="30" required>
+          </div>
+          <div>
+            <label for="nickname">Nickname:</label>
+            <input type="text" id="nickname" name="nickname" maxlength="30" required>
+          </div>
+          <div>
+            <label for="age">Age:</label>
+            <input type="number" id="age" name="age" min="18" max="50" placeholder="18" required>
+          </div>
+          <div>
+            <label for="gender">Gender:</label>
+            <select id="gender" name="gender" required>
+              <option value="male">Male</option>
+              <option value="female">Female</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+          <div>
+            <label for="nationality">Nationality:</label><br>
+            <select id="nationality" name="nationality" required>
+              <option value="Kenyan" selected>Kenyan</option>
+              <option value="Ugandan">Ugandan</option>
+              <option value="Tanzanian">Tanzanian</option>
+              <option value="Rwandan">Rwandan</option>
+              <option value="Burundian">Burundian</option>
+              <option value="Somalian">Somalian</option>
+              <option value="Nigerian">Nigerian</option>
+            </select><br>
+          </div>
+        </fieldset>
+        
+        <fieldset>
+          <div>
+            <label for="skills">Skills:</label>
+            <div class="checkboxes">
+              <label><input type="checkbox" name="skills[]" value="Cleaning and organizing skills">Cleaning and organizing skills</label><br>
+              <label><input type="checkbox" name="skills[]" value="Cooking skills">Cooking skills</label><br>
+              <label><input type="checkbox" name="skills[]" value="Laundry skills">Laundry skills</label><br>
+              <label><input type="checkbox" name="skills[]" value="Time management skills">Time management skills</label><br>
+              <label><input type="checkbox" name="skills[]" value="Childcare skills">Childcare skills</label><br>
+              <label><input type="checkbox" name="skills[]" value="Basic first aid">Basic first aid</label><br>
+            </div>
+          </div>
+  
+          <div class="form-group">
+            <label for="location">Location:</label>
+            <input type="text" id="location" name="location" list="location-list" maxlength="50" required placeholder="Gwa Kairu">
+            <datalist id="location-list">
+              <option value="Juja">
+              <option value="Juja Farm">
+              <option value="Gwa Kairu">
+              <option value="Witeithie">
+              <option value="Kalimoni">
+              <option value="Murera">
+              <option value="Wamusharizi">
+              <option value="Kagwe">
+              <option value="Theta">
+              <option value="Ndarugu">
+              <option value="Komo">
+              <option value="Muchatha">
+            </datalist>
+          </div>
+
         <div class="form-group">
-          <label for="first-name">First Name:</label>
-          <input type="text" id="first-name" name="first-name" maxlength="30" required>
-        </div>
-        <div class="form-group">
-          <label for="last-name">Last Name:</label>
-          <input type="text" id="last-name" name="last-name" maxlength="30" required>
+          <label for="working-hours">Working Hours:</label><br>
+          <input type="checkbox" id="working-hours-24" name="working-hours" value="24-hours" selected>
+          <label for="working-hours-24">24 hours</label><br>
+          <input type="checkbox" id="working-hours-8" name="working-hours" value="24-hours">
+          <label for="working-hours-8">8 hours</label><br>
+          <input type="checkbox" id="working-hours-12" name="working-hours" value="12-hours">
+          <label for="working-hours-12">12 hours</label><br>
+          <input type="checkbox" id="working-hours-6" name="working-hours" value="6-hours">
+          <label for="working-hours-6">6 hours</label><br>
+          <input type="checkbox" id="working-hours-3" name="working-hours" value="3-hours">
+          <label for="working-hours-3">3 hours</label><br>
+          <input type="checkbox" id="working-hours-2" name="working-hours" value="2-hours">
+          <label for="working-hours-2">2 hours</label><br>
+          <input type="checkbox" id="working-hours-1" name="working-hours" value="1-hour">
+          <label for="working-hours-1">1 hour</label>
         </div>
 
-        
-        <div>
-          <label for="nickname">Nickname:</label>
-          <input type="text" id="nickname" name="nickname" maxlength="30" required>
+        <div class="form-group">
+          <label for="working-days">Working Days:</label><br>
+          <input type="checkbox" id="working-days-mon" name="working-days" value="Monday">
+          <label for="working-days-mon">Monday</label><br>
+          <input type="checkbox" id="working-days-tue" name="working-days" value="Tuesday">
+          <label for="working-days-tue">Tuesday</label><br>
+          <input type="checkbox" id="working-days-wed" name="working-days" value="Wednesday">
+          <label for="working-days-wed">Wednesday</label><br>
+          <input type="checkbox" id="working-days-thu" name="working-days" value="Thursday">
+          <label for="working-days-thu">Thursday</label><br>
+          <input type="checkbox" id="working-days-fri" name="working-days" value="Friday">
+          <label for="working-days-fri">Friday</label><br>
+          <input type="checkbox" id="working-days-sat" name="working-days" value="Saturday">
+          <label for="working-days-sat">Saturday</label><br>
+          <input type="checkbox" id="working-days-sun" name="working-days" value="Sunday">
+          <label for="working-days-sun">Sunday</label>
         </div>
-        <div>
-          <label for="age">Age:</label>
-          <input type="number" id="age" name="age" min="18" max="50" placeholder="18" required>
-        </div>
-        <div>
-          <label for="gender">Gender:</label>
-          <select id="gender" name="gender" required>
-            <option value="male">Male</option>
-            <option value="female">Female</option>
-            <option value="other">Other</option>
-          </select>
-        </div>
-        
-        <div>
-          <label for="nationality">Nationality:</label><br>
-          <select id="nationality" name="nationality" required>
-            <option value="Kenyan" selected>Kenyan</option>
-            <option value="Ugandan">Ugandan</option>
-            <option value="Tanzanian">Tanzanian</option>
-            <option value="Rwandan">Rwandan</option>
-            <option value="Burundian">Burundian</option>
-            <option value="Somalian">Somalian</option>
-            <option value="Nigerian">Nigerian</option>
-          </select><br>
-        </div>
-        
-        <div>
-          <label for="skills">Skills:</label>
-          <div class="checkboxes">
-            <label><input type="checkbox" name="skills[]" value="Cleaning and organizing skills">Cleaning and organizing skills</label><br>
-            <label><input type="checkbox" name="skills[]" value="Cooking skills">Cooking skills</label><br>
-            <label><input type="checkbox" name="skills[]" value="Laundry skills">Laundry skills</label><br>
-            <label><input type="checkbox" name="skills[]" value="Time management skills">Time management skills</label><br>
-            <label><input type="checkbox" name="skills[]" value="Childcare skills">Childcare skills</label><br>
-            <label><input type="checkbox" name="skills[]" value="Basic first aid">Basic first aid</label><br>
+
+        <div class="form-group">
+          <label for="work-experience">Work Experience:</label>
+          <div>
+            <input type="radio" id="0-6-months" name="work-experience" value="0-6 months" required>
+            <label for="0-6-months">0 to 6 months</label>
+            <input type="radio" id="6-months-1-year" name="work-experience" value="6 months to 1 year">
+            <label for="6-months-1-year">6 months to 1 year</label>
+            <input type="radio" id="1-2-years" name="work-experience" value="1 year to 2 years">
+            <label for="1-2-years">1 to 2 years</label>
+            <input type="radio" id="2-3-years" name="work-experience" value="2 to 3 years">
+            <label for="2-3-years">2 to 3 years</label>
+            <input type="radio" id="3-5-years" name="work-experience" value="3 to 5 years">
+            <label for="3-5-years">3 to 5 years</label>
+            <input type="radio" id="5+-years" name="work-experience" value="5+ years">
+            <label for="5+-years">5+ years</label>
           </div>
         </div>
-  
-        <div class="form-group">
-          <label for="location">Location:</label>
-          <input type="text" id="location" name="location" list="location-list" maxlength="50" required placeholder="Gwa Kairu">
-          <datalist id="location-list">
-            <option value="Juja">
-            <option value="Juja Farm">
-            <option value="Gwa Kairu">
-            <option value="Witeithie">
-            <option value="Kalimoni">
-            <option value="Murera">
-            <option value="Wamusharizi">
-            <option value="Kagwe">
-            <option value="Theta">
-            <option value="Ndarugu">
-            <option value="Komo">
-            <option value="Muchatha">
-          </datalist>
-        </div>
-        
-      <div class="form-group">
-        <label for="working-hours">Working Hours:</label>
-        <br>
-        <input type="checkbox" id="working-hours-24" name="working-hours" value="24-hours" selected>
-        <label for="working-hours-24">24 hours</label>
-        <br>
-        <input type="checkbox" id="working-hours-8" name="working-hours" value="24-hours">
-        <label for="working-hours-8">8 hours</label>
-        <br>
-        <input type="checkbox" id="working-hours-12" name="working-hours" value="12-hours">
-        <label for="working-hours-12">12 hours</label>
-        <br>
-        <input type="checkbox" id="working-hours-6" name="working-hours" value="6-hours">
-        <label for="working-hours-6">6 hours</label>
-        <br>
-        <input type="checkbox" id="working-hours-3" name="working-hours" value="3-hours">
-        <label for="working-hours-3">3 hours</label>
-        <br>
-        <input type="checkbox" id="working-hours-2" name="working-hours" value="2-hours">
-        <label for="working-hours-2">2 hours</label>
-        <br>
-        <input type="checkbox" id="working-hours-1" name="working-hours" value="1-hour">
-        <label for="working-hours-1">1 hour</label>
-      </div>
 
-      <div class="form-group">
-        <label for="working-days">Working Days:</label>
-        <br>
-        <input type="checkbox" id="working-days-mon" name="working-days" value="Monday">
-        <label for="working-days-mon">Monday</label>
-        <br>
-        <input type="checkbox" id="working-days-tue" name="working-days" value="Tuesday">
-        <label for="working-days-tue">Tuesday</label>
-        <br>
-        <input type="checkbox" id="working-days-wed" name="working-days" value="Wednesday">
-        <label for="working-days-wed">Wednesday</label>
-        <br>
-        <input type="checkbox" id="working-days-thu" name="working-days" value="Thursday">
-        <label for="working-days-thu">Thursday</label>
-        <br>
-        <input type="checkbox" id="working-days-fri" name="working-days" value="Friday">
-        <label for="working-days-fri">Friday</label>
-        <br>
-        <input type="checkbox" id="working-days-sat" name="working-days" value="Saturday">
-        <label for="working-days-sat">Saturday</label>
-        <br>
-        <input type="checkbox" id="working-days-sun" name="working-days" value="Sunday">
-        <label for="working-days-sun">Sunday</label>
-      </div>
-
-
-      <div class="form-group">
-        <label for="work-experience">Work Experience:</label>
-        <div>
-          <input type="radio" id="0-6-months" name="work-experience" value="0-6 months" required>
-          <label for="0-6-months">0 to 6 months</label>
-
-          <input type="radio" id="6-months-1-year" name="work-experience" value="6 months to 1 year">
-          <label for="6-months-1-year">6 months to 1 year</label>
-
-          <input type="radio" id="1-2-years" name="work-experience" value="1 year to 2 years">
-          <label for="1-2-years">1 to 2 years</label>
-
-          <input type="radio" id="2-3-years" name="work-experience" value="2 to 3 years">
-          <label for="2-3-years">2 to 3 years</label>
-
-          <input type="radio" id="3-5-years" name="work-experience" value="3 to 5 years">
-          <label for="3-5-years">3 to 5 years</label>
-
-          <input type="radio" id="5+-years" name="work-experience" value="5+ years">
-          <label for="5+-years">5+ years</label>
-        </div>
-      </div>
-        
-        <div>
-          <label for="languages">Languages:</label><br>
-          <input type="checkbox" id="english" name="languages" value="English" required>
-          <label for="english">English</label><br>
-          <input type="checkbox" id="swahili" name="languages" value="Swahili" required>
-          <label for="swahili">Swahili</label><br>
-          <input type="checkbox" id="kikuyu" name="languages" value="Kikuyu" required>
-          <label for="kikuyu">Kikuyu</label><br>
-          <input type="checkbox" id="kalenjin" name="languages" value="Kalenjin" required>
-          <label for="kalenjin">Kalenjin</label><br>
-          <input type="checkbox" id="luo" name="languages" value="Luo" required>
-          <label for="luo">Luo</label><br>
-          <input type="checkbox" id="kamba" name="languages" value="Kamba" required>
-          <label for="kamba">Kamba</label><br>
-          <input type="checkbox" id="maasai" name="languages" value="Maasai" required>
-          <label for="maasai">Maasai</label><br>
-        </div>
+          <div>
+            <label for="languages">Languages:</label><br>
+            <input type="checkbox" id="english" name="languages" value="English" required>
+            <label for="english">English</label><br>
+            <input type="checkbox" id="swahili" name="languages" value="Swahili" required>
+            <label for="swahili">Swahili</label><br>
+            <input type="checkbox" id="kikuyu" name="languages" value="Kikuyu" required>
+            <label for="kikuyu">Kikuyu</label><br>
+            <input type="checkbox" id="kalenjin" name="languages" value="Kalenjin" required>
+            <label for="kalenjin">Kalenjin</label><br>
+            <input type="checkbox" id="luo" name="languages" value="Luo" required>
+            <label for="luo">Luo</label><br>
+            <input type="checkbox" id="kamba" name="languages" value="Kamba" required>
+            <label for="kamba">Kamba</label><br>
+            <input type="checkbox" id="maasai" name="languages" value="Maasai" required>
+            <label for="maasai">Maasai</label><br>
+          </div>
+        </fieldset>
 
         <div>
           <label for="rate-per-hour">Rate per hour (Ksh):</label><br>
