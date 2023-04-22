@@ -38,6 +38,15 @@ nav a {
   }
 }
 
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: #ffffff;
+  color: #000000;
+  font-family: serif;
+
 .name {
   font-weight: bold;
   font-size: 24px;
