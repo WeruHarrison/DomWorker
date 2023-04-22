@@ -1,0 +1,55 @@
+/* Define the font family for the entire webpage */
+body {
+  font-family: serif;
+}
+
+/* Define the styles for the heading */
+#heading {
+  font-size: 2em;
+  text-align: center;
+  color: #AB2F28;
+}
+
+/* Define the styles for the paragraph */
+#description {
+  font-size: 1.2em;
+  line-height: 1.5;
+  margin-bottom: 20px;
+}
+
+/* Define the styles for the form */
+#profile-form {
+  max-width: 500px;
+  margin: 0 auto;
+  background-color: #BBC858;
+  padding: 20px;
+  border-radius: 5px;
+}
+
+/* Define the styles for the form fields */
+label {
+  display: block;
+  margin-bottom: 10px;
+  color: #AB2F28;
+}
+
+input[type="text"],
+textarea {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+/* Define the style for the submit button */
+input[type="submit"] {
+  background-color: #C6792D;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1.2em;
+}
