@@ -52,11 +52,10 @@ nav a {
 
 .container {
   display: flex;
-  justify-content: center;
+  /*justify-content: center;*/
   align-items: center;
   flex-direction: column;
-  background-color: #ffffff;
-  color: #000000;
+
   font-family: serif;
   margin-bottom: 10px;
 
