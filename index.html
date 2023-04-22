@@ -23,6 +23,7 @@
       <h1>DomWork - Workers</h1>
       <form>
         <fieldset>
+          <legend>Personal Information</legend>
           <div class="form-group">
             <label for="first-name">First Name:</label>
             <input type="text" id="first-name" name="first-name" maxlength="30" required>
@@ -62,6 +63,7 @@
         </fieldset>
         
         <fieldset>
+          <legend>Skills, Experiences, Availability</legend>
           <div>
             <label for="skills">Skills:</label>
             <div class="checkboxes">
@@ -166,45 +168,51 @@
           </div>
         </fieldset>
 
-        <div>
-          <label for="rate-per-hour">Rate per hour (Ksh):</label><br>
-          <input type="number" id="rate-per-hour" name="rate-per-hour" min="1" required><br>
+        <fieldset>
+          <legend>Payment</legend>
+          <div>
+            <label for="rate-per-hour">Rate per hour (Ksh):</label><br>
+            <input type="number" id="rate-per-hour" name="rate-per-hour" min="1" required><br>
+          </div>
+
+          <div>
+            <label for="rate-per-day">Rate per day (Ksh):</label><br>
+            <input type="number" id="rate-per-day" name="rate-per-day" min="100" required><br>
+          </div>
+
+          <div>
+            <label for="when-paid">When Are You Paid:</label><br>
+            <input type="radio" id="before-work" name="when-paid" value="Before work" required>
+            <label for="before-work">Before work</label><br>
+            <input type="radio" id="after-work" name="when-paid" value="After work" required>
+            <label for="after-work">After work</label><br>
+          </div>
+
+          <div>
+            <label for="payment-method">Method of Payment:</label><br>
+            <input type="radio" id="cash" name="payment-method" value="Cash" required>
+            <label for="cash">Cash</label><br>
+            <input type="radio" id="mpesa" name="payment-method" value="MPesa" required>
+            <label for="mpesa">MPesa</label><br>
+            <input type="radio" id="airtel-money" name="payment-method" value="Airtel Money" required>
+            <label for="airtel-money">Airtel Money</label><br>
+            <input type="radio" id="bank-transfer" name="payment-method" value="Bank Transfer" required>
+            <label for="bank-transfer">Bank Transfer</label><br>
+          </div>
+        </fieldset>
+
+      <fieldset>
+        <legend>Contact Information</legend>
+        <div class="form-group">
+          <label for="phone-number">Phone Number:</label>
+          <input type="tel" id="phone-number" name="phone-number" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required required placeholder="+254-712-345-678">
         </div>
 
-        <div>
-          <label for="rate-per-day">Rate per day (Ksh):</label><br>
-          <input type="number" id="rate-per-day" name="rate-per-day" min="100" required><br>
+        <div class="form-group">
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email" required required placeholder="myemail@gmail.com">
         </div>
-
-        <div>
-          <label for="when-paid">When Are You Paid:</label><br>
-          <input type="radio" id="before-work" name="when-paid" value="Before work" required>
-          <label for="before-work">Before work</label><br>
-          <input type="radio" id="after-work" name="when-paid" value="After work" required>
-          <label for="after-work">After work</label><br>
-        </div>
-
-        <div>
-          <label for="payment-method">Method of Payment:</label><br>
-          <input type="radio" id="cash" name="payment-method" value="Cash" required>
-          <label for="cash">Cash</label><br>
-          <input type="radio" id="mpesa" name="payment-method" value="MPesa" required>
-          <label for="mpesa">MPesa</label><br>
-          <input type="radio" id="airtel-money" name="payment-method" value="Airtel Money" required>
-          <label for="airtel-money">Airtel Money</label><br>
-          <input type="radio" id="bank-transfer" name="payment-method" value="Bank Transfer" required>
-          <label for="bank-transfer">Bank Transfer</label><br>
-        </div>
-
-      <div class="form-group">
-        <label for="phone-number">Phone Number:</label>
-        <input type="tel" id="phone-number" name="phone-number" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required required placeholder="+254-712-345-678">
-      </div>
-
-      <div class="form-group">
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required required placeholder="myemail@gmail.com">
-      </div>
+        </fieldset>
         
       <button type="submit">Submit</button>
     </form>
