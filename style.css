@@ -1,55 +1,58 @@
-/* Define the font family for the entire webpage */
+/* set background color */
+body {
+  background-color: #BBC858;
+}
+
+/* set font family */
 body {
   font-family: serif;
 }
 
-/* Define the styles for the heading */
-#heading {
-  font-size: 2em;
-  text-align: center;
-  color: #AB2F28;
+/* set font color and text shadow */
+header nav ul li a {
+  color: white;
+  text-shadow: 1px 1px white;
 }
 
-/* Define the styles for the paragraph */
-#description {
-  font-size: 1.2em;
-  line-height: 1.5;
-  margin-bottom: 20px;
-}
-
-/* Define the styles for the form */
-#profile-form {
-  max-width: 500px;
-  margin: 0 auto;
-  background-color: #BBC858;
-  padding: 20px;
-  border-radius: 5px;
-}
-
-/* Define the styles for the form fields */
-label {
-  display: block;
-  margin-bottom: 10px;
-  color: #AB2F28;
-}
-
-input[type="text"],
-textarea {
+/* set header and nav layout */
+header {
   display: block;
   width: 100%;
-  padding: 10px;
-  border: none;
-  border-radius: 5px;
-  margin-bottom: 20px;
+  height: auto;
 }
 
-/* Define the style for the submit button */
-input[type="submit"] {
-  background-color: #C6792D;
-  color: #fff;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 1.2em;
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+nav ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+}
+
+nav ul li {
+  margin: 0;
+  padding: 0;
+}
+
+nav ul li a {
+  display: block;
+  padding: 1em;
+  text-decoration: none;
+}
+
+/* set media query for mobile view */
+@media only screen and (max-width: 768px) {
+  nav {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
 }
