@@ -10,6 +10,7 @@ header {
 
 fieldset {
   background-color: #efefef;
+  text-align: center;
 }
 
 #footer {
@@ -56,9 +57,10 @@ nav a {
 .container {
   /*display: flex;
   justify-content: center;
-  flex-direction: column;*/
-  align-items: center;
-  margin-bottom: 10px;
+  flex-direction: column;
+  align-items: center;*/
+  margin-bottom: 5px auto;
+  width: 80%;
 
 .name {
   font-weight: bold;
