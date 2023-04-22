@@ -8,6 +8,10 @@ header {
   padding: 20px;
 }
 
+fieldset {
+  background-color: #efefef;
+}
+
 #footer {
   background-color: #330066;
   padding: 20px;
@@ -55,7 +59,6 @@ nav a {
   flex-direction: column;*/
   align-items: center;
   margin-bottom: 10px;
-  background-color: #efefef;
 
 .name {
   font-weight: bold;
@@ -71,4 +74,11 @@ nav a {
 .skills li {
   display: inline-block;
   margin-right: 10px;
+}
+
+h1 {
+  margin: 0;
+  font-size: 36px;
+  color: #ffffff;
+  text-align: center;
 }
