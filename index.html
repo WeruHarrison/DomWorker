@@ -24,23 +24,23 @@
       <form>
         <fieldset>
           <legend>Personal Information</legend>
-          <div class="name">
+          <div class="name container">
             <label for="first-name">First Name:</label>
             <input type="text" id="first-name" name="first-name" maxlength="30" required>
           </div>  
-          <div class="name">
+          <div class="name container">
             <label for="last-name">Last Name:</label>
             <input type="text" id="last-name" name="last-name" maxlength="30" required>
           </div>
-          <div>
+          <div class="container">
             <label for="nickname">Nickname:</label>
             <input type="text" id="nickname" name="nickname" maxlength="30" required>
           </div>
-          <div>
+          <div class="container">
             <label for="age">Age:</label>
             <input type="number" id="age" name="age" min="18" max="50" placeholder="18" required>
           </div>
-          <div>
+          <div class="container">
             <label for="gender">Gender:</label>
             <select id="gender" name="gender" required>
               <option value="male">Male</option>
@@ -48,7 +48,7 @@
               <option value="other">Other</option>
             </select>
           </div>
-          <div>
+          <div class="container">
             <label for="nationality">Nationality:</label>
             <select id="nationality" name="nationality" required>
               <option value="Kenyan" selected>Kenyan</option>
@@ -64,7 +64,7 @@
         
         <fieldset>
           <legend>Skills, Experiences, Availability</legend>
-          <div>
+          <div class="container">
             <label for="skills">Skills:</label>
             <div class="checkboxes">
               <label><input type="checkbox" name="skills[]" value="Cleaning and organizing skills">Cleaning and organizing skills</label><br>
@@ -76,7 +76,7 @@
             </div>
           </div>
   
-          <div class="form-group">
+          <div class="form-group container">
             <label for="location">Location:</label>
             <input type="text" id="location" name="location" list="location-list" maxlength="50" required placeholder="Gwa Kairu">
             <datalist id="location-list">
@@ -95,7 +95,7 @@
             </datalist>
           </div>
 
-        <div class="form-group">
+        <div class="form-group container">
           <label for="working-hours">Working Hours:</label><br>
           <input type="checkbox" id="working-hours-24" name="working-hours" value="24-hours" selected>
           <label for="working-hours-24">24 hours</label><br>
@@ -113,7 +113,7 @@
           <label for="working-hours-1">1 hour</label>
         </div>
 
-        <div class="form-group">
+        <div class="form-group container">
           <label for="working-days">Working Days:</label><br>
           <input type="checkbox" id="working-days-mon" name="working-days" value="Monday">
           <label for="working-days-mon">Monday</label><br>
@@ -131,7 +131,7 @@
           <label for="working-days-sun">Sunday</label>
         </div>
 
-        <div class="form-group">
+        <div class="form-group container">
           <label for="work-experience">Work Experience:</label>
           <div>
             <input type="radio" id="0-6-months" name="work-experience" value="0-6 months" required>
@@ -149,7 +149,7 @@
           </div>
         </div>
 
-          <div>
+          <div class="container">
             <label for="languages">Languages:</label><br>
             <input type="checkbox" id="english" name="languages" value="English" required>
             <label for="english">English</label><br>
@@ -170,7 +170,7 @@
 
         <fieldset>
           <legend>Payment</legend>
-          <div>
+          <div class="container">
             <label for="rate-per-hour">Rate per hour (Ksh):</label><br>
             <input type="number" id="rate-per-hour" name="rate-per-hour" min="1" required><br>
           </div>
@@ -180,7 +180,7 @@
             <input type="number" id="rate-per-day" name="rate-per-day" min="100" required><br>
           </div>
 
-          <div>
+          <div class="container">
             <label for="when-paid">When Are You Paid:</label><br>
             <input type="radio" id="before-work" name="when-paid" value="Before work" required>
             <label for="before-work">Before work</label><br>
@@ -188,7 +188,7 @@
             <label for="after-work">After work</label><br>
           </div>
 
-          <div>
+          <div class="container">
             <label for="payment-method">Method of Payment:</label><br>
             <input type="radio" id="cash" name="payment-method" value="Cash" required>
             <label for="cash">Cash</label><br>
@@ -203,17 +203,17 @@
 
       <fieldset>
         <legend>Contact Information</legend>
-        <div class="contacts">
+        <div class="contacts container">
           <label for="primary-phone-number">Primary Phone Number:</label>
           <input type="tel" id="primary-phone-number" name="primary-phone-number" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required required placeholder="+254-712-345-678">
         </div>
         
-        <div class="contacts">
+        <div class="contacts container">
           <label for="sec-phone-number">Secondary Phone Number:</label>
           <input type="tel" id="sec-phone-number" name="sec-phone-number" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required required placeholder="+2547-1234-5678">
         </div>
 
-        <div class="contacts">
+        <div class="contacts container">
           <label for="email">Email:</label>
           <input type="email" id="email" name="email" required required placeholder="myemail@gmail.com">
         </div>
