@@ -38,7 +38,7 @@
         </div>
         <div>
           <label for="age">Age:</label>
-          <input type="number" id="age" name="age" min="18" max="50" required>
+          <input type="number" id="age" name="age" min="18" max="50" placeholder="18" required>
         </div>
         <div>
           <label for="gender">Gender:</label>
@@ -76,7 +76,7 @@
   
         <div class="form-group">
           <label for="location">Location:</label>
-          <input type="text" id="location" name="location" list="location-list" maxlength="50" required>
+          <input type="text" id="location" name="location" list="location-list" maxlength="50" required placeholder="Gwa Kairu">
           <datalist id="location-list">
             <option value="Juja">
             <option value="Juja Farm">
@@ -96,8 +96,11 @@
       <div class="form-group">
         <label for="working-hours">Working Hours:</label>
         <br>
-        <input type="checkbox" id="working-hours-24" name="working-hours" value="24-hours">
+        <input type="checkbox" id="working-hours-24" name="working-hours" value="24-hours" selected>
         <label for="working-hours-24">24 hours</label>
+        <br>
+        <input type="checkbox" id="working-hours-8" name="working-hours" value="24-hours">
+        <label for="working-hours-8">8 hours</label>
         <br>
         <input type="checkbox" id="working-hours-12" name="working-hours" value="12-hours">
         <label for="working-hours-12">12 hours</label>
@@ -214,13 +217,12 @@
 
       <div class="form-group">
         <label for="phone-number">Phone Number:</label>
-        <input type="tel" id="phone-number" name="phone-number" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required>
-        <small>Format: 123-456-7890</small>
+        <input type="tel" id="phone-number" name="phone-number" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required required placeholder="+254-712-345-678">
       </div>
 
       <div class="form-group">
         <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required>
+        <input type="email" id="email" name="email" required required placeholder="myemail@gmail.com">
       </div>
 
       <button type="submit">Submit</button>
