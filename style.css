@@ -39,8 +39,7 @@ nav li {
 
 nav a {
   text-decoration: none;
-  color: #FFFFFF;
-  text-shadow: 1px 1px #FFFFFF;
+  color: #000000;
 }
 
 @media screen and (max-width: 600px) {
