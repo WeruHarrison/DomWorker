@@ -46,10 +46,10 @@ nav a {
   background-color: #ffffff;
   color: #000000;
   font-family: serif;
+  margin-bottom: 10px;
 
 .name {
   font-weight: bold;
-  font-size: 24px;
   margin-bottom: 10px;
 }
 
