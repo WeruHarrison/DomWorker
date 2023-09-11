@@ -1,0 +1,743 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=1in]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={RealEstateModelling},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{RealEstateModelling}
+\author{}
+\date{\vspace{-2.5em}2023-09-10}
+
+\begin{document}
+\maketitle
+
+\hypertarget{r-markdown}{%
+\subsection{R Markdown}\label{r-markdown}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(tidyverse)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## -- Attaching core tidyverse packages ------------------------ tidyverse 2.0.0 --
+## v dplyr     1.1.1     v readr     2.1.4
+## v forcats   1.0.0     v stringr   1.5.0
+## v ggplot2   3.4.2     v tibble    3.2.1
+## v lubridate 1.9.2     v tidyr     1.3.0
+## v purrr     1.0.1     
+## -- Conflicts ------------------------------------------ tidyverse_conflicts() --
+## x dplyr::filter() masks stats::filter()
+## x dplyr::lag()    masks stats::lag()
+## i Use the conflicted package (<http://conflicted.r-lib.org/>) to force all conflicts to become errors
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(e1071)}
+\end{Highlighting}
+\end{Shaded}
+
+Loading the dataset
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{df }\OtherTok{\textless{}{-}} \FunctionTok{read.csv}\NormalTok{(}\StringTok{"C:/Users/user/Desktop/RealEstateModelling/HousingValuationTest{-}V2.csv"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{numerical\_vars }\OtherTok{\textless{}{-}} \FunctionTok{select}\NormalTok{(df, }\StringTok{"YearBuilt"}\NormalTok{, }\StringTok{"FullBath"}\NormalTok{, }\StringTok{"HalfBath"}\NormalTok{, }\StringTok{"BedroomAbvGr"}\NormalTok{, }\StringTok{"KitchenAbvGr"}\NormalTok{, }\StringTok{"TotalRmsAbvGrd"}\NormalTok{, }\StringTok{"Fireplaces"}\NormalTok{, }\StringTok{"GarageCars"}\NormalTok{, }\StringTok{"MoSold"}\NormalTok{, }\StringTok{"YrSold"}\NormalTok{, }\StringTok{"LotArea"}\NormalTok{, }\StringTok{"TotalBSF"}\NormalTok{, }\StringTok{"LowQualFinSF"}\NormalTok{, }\StringTok{"LivingArea"}\NormalTok{, }\StringTok{"PoolArea"}\NormalTok{, }\StringTok{"OpenPorchSF"}\NormalTok{, }\StringTok{"SalePrice"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{numerical-variables-summary-statistics}{%
+\section{Numerical variables summary
+statistics}\label{numerical-variables-summary-statistics}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{summary\_stats }\OtherTok{\textless{}{-}} \FunctionTok{summary}\NormalTok{(numerical\_vars, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{)}
+\FunctionTok{print}\NormalTok{(summary\_stats)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##    YearBuilt       FullBath        HalfBath       BedroomAbvGr  
+##  Min.   :1872   Min.   :0.000   Min.   :0.0000   Min.   :0.000  
+##  1st Qu.:1954   1st Qu.:1.000   1st Qu.:0.0000   1st Qu.:2.000  
+##  Median :1973   Median :2.000   Median :0.0000   Median :3.000  
+##  Mean   :1971   Mean   :1.566   Mean   :0.3831   Mean   :2.869  
+##  3rd Qu.:2001   3rd Qu.:2.000   3rd Qu.:1.0000   3rd Qu.:3.000  
+##  Max.   :2010   Max.   :3.000   Max.   :2.0000   Max.   :8.000  
+##                                                                 
+##   KitchenAbvGr   TotalRmsAbvGrd    Fireplaces       GarageCars   
+##  Min.   :0.000   Min.   : 2.00   Min.   :0.0000   Min.   :0.000  
+##  1st Qu.:1.000   1st Qu.: 5.00   1st Qu.:0.0000   1st Qu.:1.000  
+##  Median :1.000   Median : 6.00   Median :1.0000   Median :2.000  
+##  Mean   :1.047   Mean   : 6.52   Mean   :0.6142   Mean   :1.771  
+##  3rd Qu.:1.000   3rd Qu.: 7.00   3rd Qu.:1.0000   3rd Qu.:2.000  
+##  Max.   :3.000   Max.   :14.00   Max.   :3.0000   Max.   :4.000  
+##                                                                  
+##      MoSold           YrSold        LotArea          TotalBSF   
+##  Min.   : 1.000   Min.   :2006   Min.   :  1300   Min.   :   0  
+##  1st Qu.: 5.000   1st Qu.:2007   1st Qu.:  7544   1st Qu.: 799  
+##  Median : 6.000   Median :2008   Median :  9478   Median : 999  
+##  Mean   : 6.319   Mean   :2008   Mean   : 10521   Mean   :1065  
+##  3rd Qu.: 8.000   3rd Qu.:2009   3rd Qu.: 11604   3rd Qu.:1304  
+##  Max.   :12.000   Max.   :2010   Max.   :215245   Max.   :6110  
+##                                                   NA's   :49    
+##   LowQualFinSF       LivingArea      PoolArea       OpenPorchSF    
+##  Min.   :  0.000   Min.   : 334   Min.   :  0.00   Min.   :  0.00  
+##  1st Qu.:  0.000   1st Qu.:1131   1st Qu.:  0.00   1st Qu.:  0.00  
+##  Median :  0.000   Median :1467   Median :  0.00   Median : 25.00  
+##  Mean   :  5.869   Mean   :1517   Mean   :  2.77   Mean   : 46.37  
+##  3rd Qu.:  0.000   3rd Qu.:1780   3rd Qu.:  0.00   3rd Qu.: 68.00  
+##  Max.   :572.000   Max.   :5642   Max.   :738.00   Max.   :547.00  
+##                    NA's   :22                                      
+##    SalePrice     
+##  Min.   : 34900  
+##  1st Qu.:130000  
+##  Median :163250  
+##  Mean   :181112  
+##  3rd Qu.:214000  
+##  Max.   :755000  
+## 
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{numerical\_sd }\OtherTok{\textless{}{-}} \FunctionTok{round}\NormalTok{(}\FunctionTok{sapply}\NormalTok{(numerical\_vars, sd), }\DecValTok{4}\NormalTok{)}
+\FunctionTok{print}\NormalTok{(numerical\_sd)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      YearBuilt       FullBath       HalfBath   BedroomAbvGr   KitchenAbvGr 
+##        30.0979         0.5485         0.5030         0.8153         0.2208 
+## TotalRmsAbvGrd     Fireplaces     GarageCars         MoSold         YrSold 
+##         1.6246         0.6450         0.7442         2.7030         1.3287 
+##        LotArea       TotalBSF   LowQualFinSF     LivingArea       PoolArea 
+##     10000.4637             NA        48.7219             NA        40.2598 
+##    OpenPorchSF      SalePrice 
+##        65.1386     79331.6932
+\end{verbatim}
+
+\hypertarget{calculating-the-standard-deviation-for-totalbsf-with-na-removal}{%
+\section{Calculating the standard deviation for TotalBSF with NA
+removal}\label{calculating-the-standard-deviation-for-totalbsf-with-na-removal}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{std\_dev\_TotalBSF }\OtherTok{\textless{}{-}} \FunctionTok{sd}\NormalTok{(numerical\_vars}\SpecialCharTok{$}\NormalTok{TotalBSF, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{)}
+\FunctionTok{print}\NormalTok{(std\_dev\_TotalBSF)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 440.4783
+\end{verbatim}
+
+\hypertarget{calculating-the-standard-deviation-for-livingarea-with-na-removal}{%
+\section{Calculating the standard deviation for LivingArea with NA
+removal}\label{calculating-the-standard-deviation-for-livingarea-with-na-removal}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{std\_dev\_LivingArea }\OtherTok{\textless{}{-}} \FunctionTok{sd}\NormalTok{(numerical\_vars}\SpecialCharTok{$}\NormalTok{LivingArea, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{)}
+\FunctionTok{print}\NormalTok{(std\_dev\_LivingArea)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 525.7061
+\end{verbatim}
+
+\hypertarget{numerical-variables-skewness}{%
+\section{Numerical variables
+skewness}\label{numerical-variables-skewness}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{numerical\_skewness }\OtherTok{\textless{}{-}} \FunctionTok{round}\NormalTok{(}\FunctionTok{sapply}\NormalTok{(numerical\_vars, skewness), }\DecValTok{4}\NormalTok{)}
+\FunctionTok{print}\NormalTok{(numerical\_skewness)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      YearBuilt       FullBath       HalfBath   BedroomAbvGr   KitchenAbvGr 
+##        -0.6185         0.0375         0.6743         0.2144         4.4686 
+## TotalRmsAbvGrd     Fireplaces     GarageCars         MoSold         YrSold 
+##         0.6775         0.6465        -0.3348         0.2118         0.0988 
+##        LotArea       TotalBSF   LowQualFinSF     LivingArea       PoolArea 
+##        12.1614             NA         8.9736             NA        14.7670 
+##    OpenPorchSF      SalePrice 
+##         2.2637         1.8897
+\end{verbatim}
+
+\hypertarget{calculating-the-skewness-for-totalbsf-with-na-removal}{%
+\section{Calculating the skewness for TotalBSF with NA
+removal}\label{calculating-the-skewness-for-totalbsf-with-na-removal}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{skewness\_TotalBSF }\OtherTok{\textless{}{-}} \FunctionTok{round}\NormalTok{(}\FunctionTok{skewness}\NormalTok{(numerical\_vars}\SpecialCharTok{$}\NormalTok{TotalBSF, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{), }\DecValTok{4}\NormalTok{)}
+\FunctionTok{print}\NormalTok{(skewness\_TotalBSF)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 1.5414
+\end{verbatim}
+
+\hypertarget{calculating-the-skewness-for-livingarea-with-na-removal}{%
+\section{Calculating the skewness for LivingArea with NA
+removal}\label{calculating-the-skewness-for-livingarea-with-na-removal}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{skewness\_LivingArea }\OtherTok{\textless{}{-}} \FunctionTok{round}\NormalTok{(}\FunctionTok{skewness}\NormalTok{(numerical\_vars}\SpecialCharTok{$}\NormalTok{LivingArea, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{), }\DecValTok{4}\NormalTok{)}
+\FunctionTok{print}\NormalTok{(skewness\_LivingArea)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 1.3725
+\end{verbatim}
+
+\hypertarget{histograms-of-numerical-variables}{%
+\subsection{Histograms of numerical
+variables}\label{histograms-of-numerical-variables}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{hist\_YearBuilt }\OtherTok{\textless{}{-}} \FunctionTok{ggplot}\NormalTok{(numerical\_vars, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ YearBuilt)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_histogram}\NormalTok{(}\AttributeTok{binwidth =} \DecValTok{5}\NormalTok{, }\AttributeTok{fill =} \StringTok{"blue"}\NormalTok{, }\AttributeTok{color =} \StringTok{"black"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"YearBuilt Histogram"}\NormalTok{, }\AttributeTok{x =} \StringTok{"YearBuilt"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{theme\_minimal}\NormalTok{()}
+\FunctionTok{print}\NormalTok{(hist\_YearBuilt)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{RealEstateModelling_files/figure-latex/unnamed-chunk-11-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{hist\_FullBath }\OtherTok{\textless{}{-}} \FunctionTok{ggplot}\NormalTok{(numerical\_vars, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ FullBath)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_histogram}\NormalTok{(}\AttributeTok{binwidth =} \DecValTok{1}\NormalTok{, }\AttributeTok{fill =} \StringTok{"blue"}\NormalTok{, }\AttributeTok{color =} \StringTok{"black"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"FullBath Histogram"}\NormalTok{, }\AttributeTok{x =} \StringTok{"FullBath"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{theme\_minimal}\NormalTok{()}
+\FunctionTok{print}\NormalTok{(hist\_FullBath)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{RealEstateModelling_files/figure-latex/unnamed-chunk-11-2.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{hist\_HalfBath }\OtherTok{\textless{}{-}} \FunctionTok{ggplot}\NormalTok{(numerical\_vars, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ HalfBath)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_histogram}\NormalTok{(}\AttributeTok{binwidth =} \DecValTok{1}\NormalTok{, }\AttributeTok{fill =} \StringTok{"blue"}\NormalTok{, }\AttributeTok{color =} \StringTok{"black"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"HalfBath Histogram"}\NormalTok{, }\AttributeTok{x =} \StringTok{"HalfBath"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{theme\_minimal}\NormalTok{()}
+\FunctionTok{print}\NormalTok{(hist\_HalfBath)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{RealEstateModelling_files/figure-latex/unnamed-chunk-11-3.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{hist\_BedroomAbvGr }\OtherTok{\textless{}{-}} \FunctionTok{ggplot}\NormalTok{(numerical\_vars, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ BedroomAbvGr)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_histogram}\NormalTok{(}\AttributeTok{binwidth =} \DecValTok{1}\NormalTok{, }\AttributeTok{fill =} \StringTok{"blue"}\NormalTok{, }\AttributeTok{color =} \StringTok{"black"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"BedroomAbvGr Histogram"}\NormalTok{, }\AttributeTok{x =} \StringTok{"BedroomAbvGr"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{theme\_minimal}\NormalTok{()}
+\FunctionTok{print}\NormalTok{(hist\_BedroomAbvGr)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{RealEstateModelling_files/figure-latex/unnamed-chunk-11-4.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{hist\_KitchenAbvGr }\OtherTok{\textless{}{-}} \FunctionTok{ggplot}\NormalTok{(numerical\_vars, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ KitchenAbvGr)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_histogram}\NormalTok{(}\AttributeTok{binwidth =} \DecValTok{1}\NormalTok{, }\AttributeTok{fill =} \StringTok{"blue"}\NormalTok{, }\AttributeTok{color =} \StringTok{"black"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"KitchenAbvGr Histogram"}\NormalTok{, }\AttributeTok{x =} \StringTok{"KitchenAbvGr"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{theme\_minimal}\NormalTok{()}
+\FunctionTok{print}\NormalTok{(hist\_KitchenAbvGr)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{RealEstateModelling_files/figure-latex/unnamed-chunk-11-5.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{hist\_TotalRmsAbvGrd }\OtherTok{\textless{}{-}} \FunctionTok{ggplot}\NormalTok{(numerical\_vars, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ TotalRmsAbvGrd)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_histogram}\NormalTok{(}\AttributeTok{binwidth =} \DecValTok{1}\NormalTok{, }\AttributeTok{fill =} \StringTok{"blue"}\NormalTok{, }\AttributeTok{color =} \StringTok{"black"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"TotalRmsAbvGrd Histogram"}\NormalTok{, }\AttributeTok{x =} \StringTok{"TotalRmsAbvGrd"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{theme\_minimal}\NormalTok{()}
+\FunctionTok{print}\NormalTok{(hist\_TotalRmsAbvGrd)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{RealEstateModelling_files/figure-latex/unnamed-chunk-11-6.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{hist\_Fireplaces }\OtherTok{\textless{}{-}} \FunctionTok{ggplot}\NormalTok{(numerical\_vars, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Fireplaces)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_histogram}\NormalTok{(}\AttributeTok{binwidth =} \DecValTok{1}\NormalTok{, }\AttributeTok{fill =} \StringTok{"blue"}\NormalTok{, }\AttributeTok{color =} \StringTok{"black"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"Fireplaces Histogram"}\NormalTok{, }\AttributeTok{x =} \StringTok{"Fireplaces"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{theme\_minimal}\NormalTok{()}
+\FunctionTok{print}\NormalTok{(hist\_Fireplaces)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{RealEstateModelling_files/figure-latex/unnamed-chunk-11-7.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{hist\_GarageCars }\OtherTok{\textless{}{-}} \FunctionTok{ggplot}\NormalTok{(numerical\_vars, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ GarageCars)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_histogram}\NormalTok{(}\AttributeTok{binwidth =} \DecValTok{1}\NormalTok{, }\AttributeTok{fill =} \StringTok{"blue"}\NormalTok{, }\AttributeTok{color =} \StringTok{"black"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"GarageCars Histogram"}\NormalTok{, }\AttributeTok{x =} \StringTok{"GarageCars"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{theme\_minimal}\NormalTok{()}
+\FunctionTok{print}\NormalTok{(hist\_GarageCars)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{RealEstateModelling_files/figure-latex/unnamed-chunk-11-8.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{hist\_MoSold }\OtherTok{\textless{}{-}} \FunctionTok{ggplot}\NormalTok{(numerical\_vars, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ MoSold)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_histogram}\NormalTok{(}\AttributeTok{binwidth =} \DecValTok{1}\NormalTok{, }\AttributeTok{fill =} \StringTok{"blue"}\NormalTok{, }\AttributeTok{color =} \StringTok{"black"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"MoSold Histogram"}\NormalTok{, }\AttributeTok{x =} \StringTok{"MoSold"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{theme\_minimal}\NormalTok{()}
+\FunctionTok{print}\NormalTok{(hist\_MoSold)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{RealEstateModelling_files/figure-latex/unnamed-chunk-11-9.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{hist\_YrSold }\OtherTok{\textless{}{-}} \FunctionTok{ggplot}\NormalTok{(numerical\_vars, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ YrSold)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_histogram}\NormalTok{(}\AttributeTok{binwidth =} \DecValTok{1}\NormalTok{, }\AttributeTok{fill =} \StringTok{"blue"}\NormalTok{, }\AttributeTok{color =} \StringTok{"black"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"YrSold Histogram"}\NormalTok{, }\AttributeTok{x =} \StringTok{"YrSold"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{theme\_minimal}\NormalTok{()}
+\FunctionTok{print}\NormalTok{(hist\_YrSold)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{RealEstateModelling_files/figure-latex/unnamed-chunk-11-10.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{hist\_LotArea }\OtherTok{\textless{}{-}} \FunctionTok{ggplot}\NormalTok{(numerical\_vars, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ LotArea)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_histogram}\NormalTok{(}\AttributeTok{binwidth =} \DecValTok{1000}\NormalTok{, }\AttributeTok{fill =} \StringTok{"blue"}\NormalTok{, }\AttributeTok{color =} \StringTok{"black"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"LotArea Histogram"}\NormalTok{, }\AttributeTok{x =} \StringTok{"LotArea"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{theme\_minimal}\NormalTok{()}
+\FunctionTok{print}\NormalTok{(hist\_LotArea)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{RealEstateModelling_files/figure-latex/unnamed-chunk-11-11.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{hist\_TotalBSF }\OtherTok{\textless{}{-}} \FunctionTok{ggplot}\NormalTok{(numerical\_vars, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ TotalBSF)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_histogram}\NormalTok{(}\AttributeTok{binwidth =} \DecValTok{500}\NormalTok{, }\AttributeTok{fill =} \StringTok{"blue"}\NormalTok{, }\AttributeTok{color =} \StringTok{"black"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"TotalBSF Histogram"}\NormalTok{, }\AttributeTok{x =} \StringTok{"TotalBSF"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{theme\_minimal}\NormalTok{()}
+\FunctionTok{print}\NormalTok{(hist\_TotalBSF)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: Removed 49 rows containing non-finite values (`stat_bin()`).
+\end{verbatim}
+
+\includegraphics{RealEstateModelling_files/figure-latex/unnamed-chunk-11-12.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{hist\_LowQualFinSF }\OtherTok{\textless{}{-}} \FunctionTok{ggplot}\NormalTok{(numerical\_vars, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ LowQualFinSF)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_histogram}\NormalTok{(}\AttributeTok{binwidth =} \DecValTok{10}\NormalTok{, }\AttributeTok{fill =} \StringTok{"blue"}\NormalTok{, }\AttributeTok{color =} \StringTok{"black"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"LowQualFinSF Histogram"}\NormalTok{, }\AttributeTok{x =} \StringTok{"LowQualFinSF"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{theme\_minimal}\NormalTok{()}
+\FunctionTok{print}\NormalTok{(hist\_LowQualFinSF)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{RealEstateModelling_files/figure-latex/unnamed-chunk-11-13.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{hist\_LivingArea }\OtherTok{\textless{}{-}} \FunctionTok{ggplot}\NormalTok{(numerical\_vars, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ LivingArea)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_histogram}\NormalTok{(}\AttributeTok{binwidth =} \DecValTok{500}\NormalTok{, }\AttributeTok{fill =} \StringTok{"blue"}\NormalTok{, }\AttributeTok{color =} \StringTok{"black"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"LivingArea Histogram"}\NormalTok{, }\AttributeTok{x =} \StringTok{"LivingArea"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{theme\_minimal}\NormalTok{()}
+\FunctionTok{print}\NormalTok{(hist\_LivingArea)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: Removed 22 rows containing non-finite values (`stat_bin()`).
+\end{verbatim}
+
+\includegraphics{RealEstateModelling_files/figure-latex/unnamed-chunk-11-14.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{hist\_PoolArea }\OtherTok{\textless{}{-}} \FunctionTok{ggplot}\NormalTok{(numerical\_vars, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ PoolArea)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_histogram}\NormalTok{(}\AttributeTok{binwidth =} \DecValTok{50}\NormalTok{, }\AttributeTok{fill =} \StringTok{"blue"}\NormalTok{, }\AttributeTok{color =} \StringTok{"black"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"PoolArea Histogram"}\NormalTok{, }\AttributeTok{x =} \StringTok{"PoolArea"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{theme\_minimal}\NormalTok{()}
+\FunctionTok{print}\NormalTok{(hist\_PoolArea)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{RealEstateModelling_files/figure-latex/unnamed-chunk-11-15.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{hist\_OpenPorchSF }\OtherTok{\textless{}{-}} \FunctionTok{ggplot}\NormalTok{(numerical\_vars, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ OpenPorchSF)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_histogram}\NormalTok{(}\AttributeTok{binwidth =} \DecValTok{20}\NormalTok{, }\AttributeTok{fill =} \StringTok{"blue"}\NormalTok{, }\AttributeTok{color =} \StringTok{"black"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"OpenPorchSF Histogram"}\NormalTok{, }\AttributeTok{x =} \StringTok{"OpenPorchSF"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{theme\_minimal}\NormalTok{()}
+\FunctionTok{print}\NormalTok{(hist\_OpenPorchSF)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{RealEstateModelling_files/figure-latex/unnamed-chunk-11-16.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{hist\_SalePrice }\OtherTok{\textless{}{-}} \FunctionTok{ggplot}\NormalTok{(numerical\_vars, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ SalePrice)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_histogram}\NormalTok{(}\AttributeTok{binwidth =} \DecValTok{10000}\NormalTok{, }\AttributeTok{fill =} \StringTok{"blue"}\NormalTok{, }\AttributeTok{color =} \StringTok{"black"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"SalePrice Histogram"}\NormalTok{, }\AttributeTok{x =} \StringTok{"SalePrice"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{theme\_minimal}\NormalTok{()}
+\FunctionTok{print}\NormalTok{(hist\_SalePrice)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{RealEstateModelling_files/figure-latex/unnamed-chunk-11-17.pdf}
+
+\hypertarget{creating-box-plots-for-each-numerical-variable}{%
+\subsection{Creating box plots for each numerical
+variable}\label{creating-box-plots-for-each-numerical-variable}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{boxplot\_YearBuilt }\OtherTok{\textless{}{-}} \FunctionTok{ggplot}\NormalTok{(numerical\_vars, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =} \StringTok{""}\NormalTok{, }\AttributeTok{y =}\NormalTok{ YearBuilt)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_boxplot}\NormalTok{(}\AttributeTok{fill =} \StringTok{"blue"}\NormalTok{, }\AttributeTok{color =} \StringTok{"black"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"YearBuilt Box Plot"}\NormalTok{, }\AttributeTok{x =} \StringTok{""}\NormalTok{, }\AttributeTok{y =} \StringTok{"YearBuilt"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{theme\_minimal}\NormalTok{()}
+\FunctionTok{print}\NormalTok{(boxplot\_YearBuilt)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{RealEstateModelling_files/figure-latex/unnamed-chunk-12-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{boxplot\_FullBath }\OtherTok{\textless{}{-}} \FunctionTok{ggplot}\NormalTok{(numerical\_vars, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =} \StringTok{""}\NormalTok{, }\AttributeTok{y =}\NormalTok{ FullBath)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_boxplot}\NormalTok{(}\AttributeTok{fill =} \StringTok{"blue"}\NormalTok{, }\AttributeTok{color =} \StringTok{"black"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"FullBath Box Plot"}\NormalTok{, }\AttributeTok{x =} \StringTok{""}\NormalTok{, }\AttributeTok{y =} \StringTok{"FullBath"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{theme\_minimal}\NormalTok{()}
+\FunctionTok{print}\NormalTok{(boxplot\_FullBath)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{RealEstateModelling_files/figure-latex/unnamed-chunk-12-2.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{boxplot\_HalfBath }\OtherTok{\textless{}{-}} \FunctionTok{ggplot}\NormalTok{(numerical\_vars, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =} \StringTok{""}\NormalTok{, }\AttributeTok{y =}\NormalTok{ HalfBath)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_boxplot}\NormalTok{(}\AttributeTok{fill =} \StringTok{"blue"}\NormalTok{, }\AttributeTok{color =} \StringTok{"black"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"HalfBath Box Plot"}\NormalTok{, }\AttributeTok{x =} \StringTok{""}\NormalTok{, }\AttributeTok{y =} \StringTok{"HalfBath"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{theme\_minimal}\NormalTok{()}
+\FunctionTok{print}\NormalTok{(boxplot\_HalfBath)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{RealEstateModelling_files/figure-latex/unnamed-chunk-12-3.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{boxplot\_BedroomAbvGr }\OtherTok{\textless{}{-}} \FunctionTok{ggplot}\NormalTok{(numerical\_vars, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =} \StringTok{""}\NormalTok{, }\AttributeTok{y =}\NormalTok{ BedroomAbvGr)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_boxplot}\NormalTok{(}\AttributeTok{fill =} \StringTok{"blue"}\NormalTok{, }\AttributeTok{color =} \StringTok{"black"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"BedroomAbvGr Box Plot"}\NormalTok{, }\AttributeTok{x =} \StringTok{""}\NormalTok{, }\AttributeTok{y =} \StringTok{"BedroomAbvGr"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{theme\_minimal}\NormalTok{()}
+\FunctionTok{print}\NormalTok{(boxplot\_BedroomAbvGr)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{RealEstateModelling_files/figure-latex/unnamed-chunk-12-4.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{boxplot\_KitchenAbvGr }\OtherTok{\textless{}{-}} \FunctionTok{ggplot}\NormalTok{(numerical\_vars, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =} \StringTok{""}\NormalTok{, }\AttributeTok{y =}\NormalTok{ KitchenAbvGr)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_boxplot}\NormalTok{(}\AttributeTok{fill =} \StringTok{"blue"}\NormalTok{, }\AttributeTok{color =} \StringTok{"black"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"KitchenAbvGr Box Plot"}\NormalTok{, }\AttributeTok{x =} \StringTok{""}\NormalTok{, }\AttributeTok{y =} \StringTok{"KitchenAbvGr"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{theme\_minimal}\NormalTok{()}
+\FunctionTok{print}\NormalTok{(boxplot\_KitchenAbvGr)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{RealEstateModelling_files/figure-latex/unnamed-chunk-12-5.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{boxplot\_TotalRmsAbvGrd }\OtherTok{\textless{}{-}} \FunctionTok{ggplot}\NormalTok{(numerical\_vars, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =} \StringTok{""}\NormalTok{, }\AttributeTok{y =}\NormalTok{ TotalRmsAbvGrd)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_boxplot}\NormalTok{(}\AttributeTok{fill =} \StringTok{"blue"}\NormalTok{, }\AttributeTok{color =} \StringTok{"black"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"TotalRmsAbvGrd Box Plot"}\NormalTok{, }\AttributeTok{x =} \StringTok{""}\NormalTok{, }\AttributeTok{y =} \StringTok{"TotalRmsAbvGrd"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{theme\_minimal}\NormalTok{()}
+\FunctionTok{print}\NormalTok{(boxplot\_TotalRmsAbvGrd)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{RealEstateModelling_files/figure-latex/unnamed-chunk-12-6.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{boxplot\_Fireplaces }\OtherTok{\textless{}{-}} \FunctionTok{ggplot}\NormalTok{(numerical\_vars, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =} \StringTok{""}\NormalTok{, }\AttributeTok{y =}\NormalTok{ Fireplaces)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_boxplot}\NormalTok{(}\AttributeTok{fill =} \StringTok{"blue"}\NormalTok{, }\AttributeTok{color =} \StringTok{"black"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"Fireplaces Box Plot"}\NormalTok{, }\AttributeTok{x =} \StringTok{""}\NormalTok{, }\AttributeTok{y =} \StringTok{"Fireplaces"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{theme\_minimal}\NormalTok{()}
+\FunctionTok{print}\NormalTok{(boxplot\_Fireplaces)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{RealEstateModelling_files/figure-latex/unnamed-chunk-12-7.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{boxplot\_GarageCars }\OtherTok{\textless{}{-}} \FunctionTok{ggplot}\NormalTok{(numerical\_vars, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =} \StringTok{""}\NormalTok{, }\AttributeTok{y =}\NormalTok{ GarageCars)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_boxplot}\NormalTok{(}\AttributeTok{fill =} \StringTok{"blue"}\NormalTok{, }\AttributeTok{color =} \StringTok{"black"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"GarageCars Box Plot"}\NormalTok{, }\AttributeTok{x =} \StringTok{""}\NormalTok{, }\AttributeTok{y =} \StringTok{"GarageCars"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{theme\_minimal}\NormalTok{()}
+\FunctionTok{print}\NormalTok{(boxplot\_GarageCars)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{RealEstateModelling_files/figure-latex/unnamed-chunk-12-8.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{boxplot\_MoSold }\OtherTok{\textless{}{-}} \FunctionTok{ggplot}\NormalTok{(numerical\_vars, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =} \StringTok{""}\NormalTok{, }\AttributeTok{y =}\NormalTok{ MoSold)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_boxplot}\NormalTok{(}\AttributeTok{fill =} \StringTok{"blue"}\NormalTok{, }\AttributeTok{color =} \StringTok{"black"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"MoSold Box Plot"}\NormalTok{, }\AttributeTok{x =} \StringTok{""}\NormalTok{, }\AttributeTok{y =} \StringTok{"MoSold"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{theme\_minimal}\NormalTok{()}
+\FunctionTok{print}\NormalTok{(boxplot\_MoSold)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{RealEstateModelling_files/figure-latex/unnamed-chunk-12-9.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{boxplot\_YrSold }\OtherTok{\textless{}{-}} \FunctionTok{ggplot}\NormalTok{(numerical\_vars, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =} \StringTok{""}\NormalTok{, }\AttributeTok{y =}\NormalTok{ YrSold)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_boxplot}\NormalTok{(}\AttributeTok{fill =} \StringTok{"blue"}\NormalTok{, }\AttributeTok{color =} \StringTok{"black"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"YrSold Box Plot"}\NormalTok{, }\AttributeTok{x =} \StringTok{""}\NormalTok{, }\AttributeTok{y =} \StringTok{"YrSold"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{theme\_minimal}\NormalTok{()}
+\FunctionTok{print}\NormalTok{(boxplot\_YrSold)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{RealEstateModelling_files/figure-latex/unnamed-chunk-12-10.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{boxplot\_LotArea }\OtherTok{\textless{}{-}} \FunctionTok{ggplot}\NormalTok{(numerical\_vars, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =} \StringTok{""}\NormalTok{, }\AttributeTok{y =}\NormalTok{ LotArea)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_boxplot}\NormalTok{(}\AttributeTok{fill =} \StringTok{"blue"}\NormalTok{, }\AttributeTok{color =} \StringTok{"black"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"LotArea Box Plot"}\NormalTok{, }\AttributeTok{x =} \StringTok{""}\NormalTok{, }\AttributeTok{y =} \StringTok{"LotArea"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{theme\_minimal}\NormalTok{()}
+\FunctionTok{print}\NormalTok{(boxplot\_LotArea)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{RealEstateModelling_files/figure-latex/unnamed-chunk-12-11.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{boxplot\_TotalBSF }\OtherTok{\textless{}{-}} \FunctionTok{ggplot}\NormalTok{(numerical\_vars, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =} \StringTok{""}\NormalTok{, }\AttributeTok{y =}\NormalTok{ TotalBSF)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_boxplot}\NormalTok{(}\AttributeTok{fill =} \StringTok{"blue"}\NormalTok{, }\AttributeTok{color =} \StringTok{"black"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"TotalBSF Box Plot"}\NormalTok{, }\AttributeTok{x =} \StringTok{""}\NormalTok{, }\AttributeTok{y =} \StringTok{"TotalBSF"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{theme\_minimal}\NormalTok{()}
+\FunctionTok{print}\NormalTok{(boxplot\_TotalBSF)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: Removed 49 rows containing non-finite values (`stat_boxplot()`).
+\end{verbatim}
+
+\includegraphics{RealEstateModelling_files/figure-latex/unnamed-chunk-12-12.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{boxplot\_LowQualFinSF }\OtherTok{\textless{}{-}} \FunctionTok{ggplot}\NormalTok{(numerical\_vars, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =} \StringTok{""}\NormalTok{, }\AttributeTok{y =}\NormalTok{ LowQualFinSF)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_boxplot}\NormalTok{(}\AttributeTok{fill =} \StringTok{"blue"}\NormalTok{, }\AttributeTok{color =} \StringTok{"black"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"LowQualFinSF Box Plot"}\NormalTok{, }\AttributeTok{x =} \StringTok{""}\NormalTok{, }\AttributeTok{y =} \StringTok{"LowQualFinSF"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{theme\_minimal}\NormalTok{()}
+\FunctionTok{print}\NormalTok{(boxplot\_LowQualFinSF)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{RealEstateModelling_files/figure-latex/unnamed-chunk-12-13.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{boxplot\_LivingArea }\OtherTok{\textless{}{-}} \FunctionTok{ggplot}\NormalTok{(numerical\_vars, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =} \StringTok{""}\NormalTok{, }\AttributeTok{y =}\NormalTok{ LivingArea)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_boxplot}\NormalTok{(}\AttributeTok{fill =} \StringTok{"blue"}\NormalTok{, }\AttributeTok{color =} \StringTok{"black"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"LivingArea Box Plot"}\NormalTok{, }\AttributeTok{x =} \StringTok{""}\NormalTok{, }\AttributeTok{y =} \StringTok{"LivingArea"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{theme\_minimal}\NormalTok{()}
+\FunctionTok{print}\NormalTok{(boxplot\_LivingArea)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: Removed 22 rows containing non-finite values (`stat_boxplot()`).
+\end{verbatim}
+
+\includegraphics{RealEstateModelling_files/figure-latex/unnamed-chunk-12-14.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{boxplot\_PoolArea }\OtherTok{\textless{}{-}} \FunctionTok{ggplot}\NormalTok{(numerical\_vars, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =} \StringTok{""}\NormalTok{, }\AttributeTok{y =}\NormalTok{ PoolArea)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_boxplot}\NormalTok{(}\AttributeTok{fill =} \StringTok{"blue"}\NormalTok{, }\AttributeTok{color =} \StringTok{"black"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"PoolArea Box Plot"}\NormalTok{, }\AttributeTok{x =} \StringTok{""}\NormalTok{, }\AttributeTok{y =} \StringTok{"PoolArea"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{theme\_minimal}\NormalTok{()}
+\FunctionTok{print}\NormalTok{(boxplot\_PoolArea)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{RealEstateModelling_files/figure-latex/unnamed-chunk-12-15.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{boxplot\_OpenPorchSF }\OtherTok{\textless{}{-}} \FunctionTok{ggplot}\NormalTok{(numerical\_vars, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =} \StringTok{""}\NormalTok{, }\AttributeTok{y =}\NormalTok{ OpenPorchSF)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_boxplot}\NormalTok{(}\AttributeTok{fill =} \StringTok{"blue"}\NormalTok{, }\AttributeTok{color =} \StringTok{"black"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"OpenPorchSF Box Plot"}\NormalTok{, }\AttributeTok{x =} \StringTok{""}\NormalTok{, }\AttributeTok{y =} \StringTok{"OpenPorchSF"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{theme\_minimal}\NormalTok{()}
+\FunctionTok{print}\NormalTok{(boxplot\_OpenPorchSF)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{RealEstateModelling_files/figure-latex/unnamed-chunk-12-16.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{boxplot\_SalePrice }\OtherTok{\textless{}{-}} \FunctionTok{ggplot}\NormalTok{(numerical\_vars, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =} \StringTok{""}\NormalTok{, }\AttributeTok{y =}\NormalTok{ SalePrice)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_boxplot}\NormalTok{(}\AttributeTok{fill =} \StringTok{"blue"}\NormalTok{, }\AttributeTok{color =} \StringTok{"black"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"SalePrice Box Plot"}\NormalTok{, }\AttributeTok{x =} \StringTok{""}\NormalTok{, }\AttributeTok{y =} \StringTok{"SalePrice"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{theme\_minimal}\NormalTok{()}
+\FunctionTok{print}\NormalTok{(boxplot\_SalePrice)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{RealEstateModelling_files/figure-latex/unnamed-chunk-12-17.pdf}
+
+\end{document}

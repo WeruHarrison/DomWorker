@@ -1,0 +1,51 @@
+---
+title: "Scatter plots"
+output: word_document
+date: "`r Sys.Date()`"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+```{r}
+library(tidyverse)
+library(e1071)
+```
+# Scatter plots for high correlation variables
+```{r}
+ggplot(data = numerical_vars, aes(x = factor(FullBath), y = LivingArea)) +
+  geom_boxplot() +
+  labs(title = "Box Plot of LivingArea by FullBath Count",
+       x = "FullBath",
+       y = "LivingArea")
+
+ggplot(data = numerical_vars, aes(x = factor(BedroomAbvGr), y = TotalRmsAbvGrd)) +
+  geom_boxplot() +
+  labs(title = "Box Plot of TotalRmsAbvGrd by BedroomAbvGr",
+       x = "BedroomAbvGr",
+       y = "TotalRmsAbvGrd")
+
+ggplot(data = numerical_vars, aes(x = factor(TotalRmsAbvGrd), y = LivingArea)) +
+  geom_boxplot() +
+  labs(title = "Box Plot of LivingArea by TotalRmsAbvGrd",
+       x = "TotalRmsAbvGrd",
+       y = "LivingArea")
+
+ggplot(data = numerical_vars, aes(x = factor(GarageCars), y = SalePrice)) +
+  geom_boxplot() +
+  labs(title = "Box Plot of SalePrice by GarageCars",
+       x = "GarageCars",
+       y = "SalePrice")
+
+ggplot(data = numerical_vars, aes(x = SalePrice, y = TotalBSF)) +
+  geom_point() +
+  labs(title = "Scatter Plot of SalePrice and TotalBSF",
+       x = "SalePrice",
+       y = "TotalBSF")
+
+ggplot(data = numerical_vars, aes(x = LivingArea, y = SalePrice)) +
+  geom_point() +
+  labs(title = "Scatter Plot of LivingArea and SalePrice",
+       x = "LivingArea",
+       y = "SalePrice")
+```

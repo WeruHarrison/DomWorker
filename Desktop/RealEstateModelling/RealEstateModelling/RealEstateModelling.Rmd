@@ -1,0 +1,499 @@
+---
+title: "RealEstateModelling"
+output: word_document
+date: "`r Sys.Date()`"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+# Loading libraries
+```{r}
+library(tidyverse)
+library(e1071)
+```
+# Loading the dataset
+```{r}
+df <- read.csv("C:/Users/user/Desktop/RealEstateModelling/HousingValuationTest-V2.csv")
+```
+
+# Creating a data frame for numerical variables 
+```{r}
+numerical_vars <- select(df, "YearBuilt", "FullBath", "HalfBath", "BedroomAbvGr", "KitchenAbvGr", "TotalRmsAbvGrd", "Fireplaces", "GarageCars", "MoSold", "YrSold", "LotArea", "TotalBSF", "LowQualFinSF", "LivingArea", "PoolArea", "OpenPorchSF", "SalePrice")
+```
+# Numerical variables summary statistics
+```{r}
+summary_stats <- summary(numerical_vars, na.rm = TRUE)
+print(summary_stats)
+```
+
+# Numerical variables standard deviation
+```{r}
+numerical_sd <- round(sapply(numerical_vars, sd), 4)
+print(numerical_sd)
+```
+# Calculating the standard deviation for TotalBSF with NA removal
+```{r}
+std_dev_TotalBSF <- sd(numerical_vars$TotalBSF, na.rm = TRUE)
+print(std_dev_TotalBSF)
+```
+
+# Calculating the standard deviation for LivingArea with NA removal
+```{r}
+std_dev_LivingArea <- sd(numerical_vars$LivingArea, na.rm = TRUE)
+print(std_dev_LivingArea)
+```
+# Numerical variables skewness
+```{r}
+numerical_skewness <- round(sapply(numerical_vars, skewness), 4)
+print(numerical_skewness)
+```
+# Calculating the skewness for TotalBSF with NA removal
+```{r}
+skewness_TotalBSF <- round(skewness(numerical_vars$TotalBSF, na.rm = TRUE), 4)
+print(skewness_TotalBSF)
+```
+# Calculating the skewness for LivingArea with NA removal
+```{r}
+skewness_LivingArea <- round(skewness(numerical_vars$LivingArea, na.rm = TRUE), 4)
+print(skewness_LivingArea)
+```
+
+## Histograms of numerical variables
+```{r}
+hist_YearBuilt <- ggplot(numerical_vars, aes(x = YearBuilt)) +
+  geom_histogram(binwidth = 5, fill = "blue", color = "black") +
+  labs(title = "YearBuilt Histogram", x = "YearBuilt") +
+  theme_minimal()
+print(hist_YearBuilt)
+
+hist_FullBath <- ggplot(numerical_vars, aes(x = FullBath)) +
+  geom_histogram(binwidth = 1, fill = "blue", color = "black") +
+  labs(title = "FullBath Histogram", x = "FullBath") +
+  theme_minimal()
+print(hist_FullBath)
+
+hist_HalfBath <- ggplot(numerical_vars, aes(x = HalfBath)) +
+  geom_histogram(binwidth = 1, fill = "blue", color = "black") +
+  labs(title = "HalfBath Histogram", x = "HalfBath") +
+  theme_minimal()
+print(hist_HalfBath)
+
+hist_BedroomAbvGr <- ggplot(numerical_vars, aes(x = BedroomAbvGr)) +
+  geom_histogram(binwidth = 1, fill = "blue", color = "black") +
+  labs(title = "BedroomAbvGr Histogram", x = "BedroomAbvGr") +
+  theme_minimal()
+print(hist_BedroomAbvGr)
+
+hist_KitchenAbvGr <- ggplot(numerical_vars, aes(x = KitchenAbvGr)) +
+  geom_histogram(binwidth = 1, fill = "blue", color = "black") +
+  labs(title = "KitchenAbvGr Histogram", x = "KitchenAbvGr") +
+  theme_minimal()
+print(hist_KitchenAbvGr)
+
+hist_TotalRmsAbvGrd <- ggplot(numerical_vars, aes(x = TotalRmsAbvGrd)) +
+  geom_histogram(binwidth = 1, fill = "blue", color = "black") +
+  labs(title = "TotalRmsAbvGrd Histogram", x = "TotalRmsAbvGrd") +
+  theme_minimal()
+print(hist_TotalRmsAbvGrd)
+
+hist_Fireplaces <- ggplot(numerical_vars, aes(x = Fireplaces)) +
+  geom_histogram(binwidth = 1, fill = "blue", color = "black") +
+  labs(title = "Fireplaces Histogram", x = "Fireplaces") +
+  theme_minimal()
+print(hist_Fireplaces)
+
+hist_GarageCars <- ggplot(numerical_vars, aes(x = GarageCars)) +
+  geom_histogram(binwidth = 1, fill = "blue", color = "black") +
+  labs(title = "GarageCars Histogram", x = "GarageCars") +
+  theme_minimal()
+print(hist_GarageCars)
+
+hist_MoSold <- ggplot(numerical_vars, aes(x = MoSold)) +
+  geom_histogram(binwidth = 1, fill = "blue", color = "black") +
+  labs(title = "MoSold Histogram", x = "MoSold") +
+  theme_minimal()
+print(hist_MoSold)
+
+hist_YrSold <- ggplot(numerical_vars, aes(x = YrSold)) +
+  geom_histogram(binwidth = 1, fill = "blue", color = "black") +
+  labs(title = "YrSold Histogram", x = "YrSold") +
+  theme_minimal()
+print(hist_YrSold)
+
+hist_LotArea <- ggplot(numerical_vars, aes(x = LotArea)) +
+  geom_histogram(binwidth = 1000, fill = "blue", color = "black") +
+  labs(title = "LotArea Histogram", x = "LotArea") +
+  theme_minimal()
+print(hist_LotArea)
+
+hist_TotalBSF <- ggplot(numerical_vars, aes(x = TotalBSF)) +
+  geom_histogram(binwidth = 500, fill = "blue", color = "black") +
+  labs(title = "TotalBSF Histogram", x = "TotalBSF") +
+  theme_minimal()
+print(hist_TotalBSF)
+
+hist_LowQualFinSF <- ggplot(numerical_vars, aes(x = LowQualFinSF)) +
+  geom_histogram(binwidth = 10, fill = "blue", color = "black") +
+  labs(title = "LowQualFinSF Histogram", x = "LowQualFinSF") +
+  theme_minimal()
+print(hist_LowQualFinSF)
+
+hist_LivingArea <- ggplot(numerical_vars, aes(x = LivingArea)) +
+  geom_histogram(binwidth = 500, fill = "blue", color = "black") +
+  labs(title = "LivingArea Histogram", x = "LivingArea") +
+  theme_minimal()
+print(hist_LivingArea)
+
+hist_PoolArea <- ggplot(numerical_vars, aes(x = PoolArea)) +
+  geom_histogram(binwidth = 50, fill = "blue", color = "black") +
+  labs(title = "PoolArea Histogram", x = "PoolArea") +
+  theme_minimal()
+print(hist_PoolArea)
+
+hist_OpenPorchSF <- ggplot(numerical_vars, aes(x = OpenPorchSF)) +
+  geom_histogram(binwidth = 20, fill = "blue", color = "black") +
+  labs(title = "OpenPorchSF Histogram", x = "OpenPorchSF") +
+  theme_minimal()
+print(hist_OpenPorchSF)
+
+hist_SalePrice <- ggplot(numerical_vars, aes(x = SalePrice)) +
+  geom_histogram(binwidth = 10000, fill = "blue", color = "black") +
+  labs(title = "SalePrice Histogram", x = "SalePrice") +
+  theme_minimal()
+print(hist_SalePrice)
+```
+
+## Creating box plots for each numerical variable
+```{r}
+boxplot_YearBuilt <- ggplot(numerical_vars, aes(x = "", y = YearBuilt)) +
+  geom_boxplot(fill = "blue", color = "black") +
+  labs(title = "YearBuilt Box Plot", x = "", y = "YearBuilt") +
+  theme_minimal()
+print(boxplot_YearBuilt)
+
+boxplot_FullBath <- ggplot(numerical_vars, aes(x = "", y = FullBath)) +
+  geom_boxplot(fill = "blue", color = "black") +
+  labs(title = "FullBath Box Plot", x = "", y = "FullBath") +
+  theme_minimal()
+print(boxplot_FullBath)
+
+boxplot_HalfBath <- ggplot(numerical_vars, aes(x = "", y = HalfBath)) +
+  geom_boxplot(fill = "blue", color = "black") +
+  labs(title = "HalfBath Box Plot", x = "", y = "HalfBath") +
+  theme_minimal()
+print(boxplot_HalfBath)
+
+boxplot_BedroomAbvGr <- ggplot(numerical_vars, aes(x = "", y = BedroomAbvGr)) +
+  geom_boxplot(fill = "blue", color = "black") +
+  labs(title = "BedroomAbvGr Box Plot", x = "", y = "BedroomAbvGr") +
+  theme_minimal()
+print(boxplot_BedroomAbvGr)
+
+boxplot_KitchenAbvGr <- ggplot(numerical_vars, aes(x = "", y = KitchenAbvGr)) +
+  geom_boxplot(fill = "blue", color = "black") +
+  labs(title = "KitchenAbvGr Box Plot", x = "", y = "KitchenAbvGr") +
+  theme_minimal()
+print(boxplot_KitchenAbvGr)
+
+boxplot_TotalRmsAbvGrd <- ggplot(numerical_vars, aes(x = "", y = TotalRmsAbvGrd)) +
+  geom_boxplot(fill = "blue", color = "black") +
+  labs(title = "TotalRmsAbvGrd Box Plot", x = "", y = "TotalRmsAbvGrd") +
+  theme_minimal()
+print(boxplot_TotalRmsAbvGrd)
+
+boxplot_Fireplaces <- ggplot(numerical_vars, aes(x = "", y = Fireplaces)) +
+  geom_boxplot(fill = "blue", color = "black") +
+  labs(title = "Fireplaces Box Plot", x = "", y = "Fireplaces") +
+  theme_minimal()
+print(boxplot_Fireplaces)
+
+boxplot_GarageCars <- ggplot(numerical_vars, aes(x = "", y = GarageCars)) +
+  geom_boxplot(fill = "blue", color = "black") +
+  labs(title = "GarageCars Box Plot", x = "", y = "GarageCars") +
+  theme_minimal()
+print(boxplot_GarageCars)
+
+boxplot_MoSold <- ggplot(numerical_vars, aes(x = "", y = MoSold)) +
+  geom_boxplot(fill = "blue", color = "black") +
+  labs(title = "MoSold Box Plot", x = "", y = "MoSold") +
+  theme_minimal()
+print(boxplot_MoSold)
+
+boxplot_YrSold <- ggplot(numerical_vars, aes(x = "", y = YrSold)) +
+  geom_boxplot(fill = "blue", color = "black") +
+  labs(title = "YrSold Box Plot", x = "", y = "YrSold") +
+  theme_minimal()
+print(boxplot_YrSold)
+
+boxplot_LotArea <- ggplot(numerical_vars, aes(x = "", y = LotArea)) +
+  geom_boxplot(fill = "blue", color = "black") +
+  labs(title = "LotArea Box Plot", x = "", y = "LotArea") +
+  theme_minimal()
+print(boxplot_LotArea)
+
+boxplot_TotalBSF <- ggplot(numerical_vars, aes(x = "", y = TotalBSF)) +
+  geom_boxplot(fill = "blue", color = "black") +
+  labs(title = "TotalBSF Box Plot", x = "", y = "TotalBSF") +
+  theme_minimal()
+print(boxplot_TotalBSF)
+
+boxplot_LowQualFinSF <- ggplot(numerical_vars, aes(x = "", y = LowQualFinSF)) +
+  geom_boxplot(fill = "blue", color = "black") +
+  labs(title = "LowQualFinSF Box Plot", x = "", y = "LowQualFinSF") +
+  theme_minimal()
+print(boxplot_LowQualFinSF)
+
+boxplot_LivingArea <- ggplot(numerical_vars, aes(x = "", y = LivingArea)) +
+  geom_boxplot(fill = "blue", color = "black") +
+  labs(title = "LivingArea Box Plot", x = "", y = "LivingArea") +
+  theme_minimal()
+print(boxplot_LivingArea)
+
+boxplot_PoolArea <- ggplot(numerical_vars, aes(x = "", y = PoolArea)) +
+  geom_boxplot(fill = "blue", color = "black") +
+  labs(title = "PoolArea Box Plot", x = "", y = "PoolArea") +
+  theme_minimal()
+print(boxplot_PoolArea)
+
+boxplot_OpenPorchSF <- ggplot(numerical_vars, aes(x = "", y = OpenPorchSF)) +
+  geom_boxplot(fill = "blue", color = "black") +
+  labs(title = "OpenPorchSF Box Plot", x = "", y = "OpenPorchSF") +
+  theme_minimal()
+print(boxplot_OpenPorchSF)
+
+boxplot_SalePrice <- ggplot(numerical_vars, aes(x = "", y = SalePrice)) +
+  geom_boxplot(fill = "blue", color = "black") +
+  labs(title = "SalePrice Box Plot", x = "", y = "SalePrice") +
+  theme_minimal()
+print(boxplot_SalePrice)
+```
+
+# Identifying missing values
+```{r}
+cols <- colnames(df)
+count_missing_values <- sapply(df, function(x) sum(is.na(x)))
+missing_values <- data.frame(Variable = cols, 
+                             NumberOfMissingValues = count_missing_values)
+print(missing_values)
+```
+
+# Handling missing values with Method 1: Imputation
+```{r}
+df_method1 <- df
+# Impute missing values in TotalBSF with the mean of the non-missing values
+mean_TotalBSF <- mean(df_method1$TotalBSF, na.rm = TRUE)
+print(mean_TotalBSF)
+df_method1$TotalBSF[is.na(df_method1$TotalBSF)] <- mean_TotalBSF
+# Impute missing values in TotalBSF with the mean of the non-missing values
+mean_LivingArea <- mean(df_method1$LivingArea, na.rm = TRUE)
+print(mean_LivingArea)
+df_method1$LivingArea[is.na(df_method1$LivingArea)] <- mean_LivingArea
+# Impute missing values in GarageType with the mode of the non-missing values
+garage_table <- c("2Types" = 6, "Attchd" = 870, "Basment" = 19, "BuiltIn" = 88, 
+                  "CarPort" = 9, "Detchd" = 384)
+garage_mode <- names(which.max(garage_table))
+print(garage_mode)
+df_method1$GarageType[is.na(df_method1$GarageType)] <- garage_mode
+# Identifying missing values after method 1
+cols1 <- colnames(df_method1)
+count_missing_values_method1 <- sapply(df_method1, function(x) sum(is.na(x)))
+missing_values_method1 <- data.frame(Variable = cols1, 
+                                     NumberOfMissingValues = count_missing_values_method1)
+print(missing_values_method1)
+```
+
+# Handling missing values with Method 2: Deleting missing values
+```{r}
+df_method2 <- df
+rows_with_na <- rowSums(is.na(df_method2[c("TotalBSF", "LivingArea", "GarageType")])) > 0
+df_method2 <- df_method2[!rows_with_na, ]
+
+# Identifying missing values after method 2
+cols2 <- colnames(df_method2)
+count_missing_values_method2 <- sapply(df_method2, function(x) sum(is.na(x)))
+missing_values_method2 <- data.frame(Variable = cols2, 
+                                     NumberOfMissingValues = count_missing_values_method2)
+print(missing_values_method2)
+```
+
+# Handling missing values with Method 3: Replacing the missing values with a specific value
+```{r}
+df_method3 <- df
+# Replacing missing values in TotalBSF with "0"
+df_method3$TotalBSF[is.na(df_method3$TotalBSF)] <- 0
+# Replacing missing values in LivingArea with "0"
+df_method3$LivingArea[is.na(df_method3$LivingArea)] <- 0
+# Replacing missing values in GarageType with "Unknown"
+df_method3$GarageType[is.na(df_method3$GarageType)] <- "Unknown"
+# Identifying missing values after method 3
+cols3 <- colnames(df_method3)
+count_missing_values_method3 <- sapply(df_method3, function(x) sum(is.na(x)))
+missing_values_method3 <- data.frame(Variable = cols3, 
+                                     NumberOfMissingValues = count_missing_values_method3)
+print(missing_values_method3)
+```
+
+# Summary statistics
+```{r}
+summary(df$TotalBSF) 
+summary(df$LivingArea)
+summary(df_method1$TotalBSF) 
+summary(df_method1$LivingArea)
+summary(df_method2$TotalBSF) 
+summary(df_method2$LivingArea)
+summary(df_method3$TotalBSF) 
+summary(df_method3$LivingArea)
+```
+
+# Transforming right skewed variables using log method
+```{r}
+right_skewed_vars <- select(df, "LowQualFinSF", "PoolArea")
+right_skewed_vars$LowQualFinSF <- log10(right_skewed_vars$LowQualFinSF + 1) 
+right_skewed_vars$PoolArea <- log10(right_skewed_vars$PoolArea + 1)
+```
+# Boxplots before transform
+```{r}
+ggplot(df) + 
+  geom_boxplot(aes(y = LowQualFinSF))+
+  labs(title = "LowQualFinSF Box Plot Before Transform", x = "", y = "LowQualFinSF") +
+  theme_minimal()
+
+ggplot(df) +
+  geom_boxplot(aes(y = PoolArea))+
+  labs(title = "PoolArea Box Plot Before Transform", x = "", y = "PoolArea") +
+  theme_minimal()
+```
+
+# Boxplots after transform
+```{r}
+ggplot(right_skewed_vars) +
+  geom_boxplot(aes(y = LowQualFinSF))+
+  labs(title = "LowQualFinSF Box Plot After Transform", x = "", y = "LowQualFinSF") +
+  theme_minimal()
+
+ggplot(right_skewed_vars) +
+  geom_boxplot(aes(y = PoolArea)) +
+  labs(title = "PoolArea Box Plot After Transform", x = "", y = "PoolArea") +
+  theme_minimal()
+```
+# Calculating before and after skewness
+```{r}
+skewness(df$LowQualFinSF)
+skewness(right_skewed_vars$LowQualFinSF) 
+skewness(df$PoolArea)
+skewness(right_skewed_vars$PoolArea)
+```
+
+# Transforming categorical variables
+```{r}
+not_missing_categorical_vars <- select(df_method1, "LotShape", "LandContour", "Utilities", "LotConfig", "Slope", "DwellClass",
+                           "CentralAir", "GarageType", "PavedDrive", "OverallQuality", "OverallCondition",
+                           "ExteriorCondition", "BasementCondition", "KitchenQuality")
+dummies <- not_missing_categorical_vars %>%
+  mutate(
+    LotShape_2 = if_else(LotShape == 2, 1, 0),
+    LotShape_3 = if_else(LotShape == 3, 1, 0),
+    LotShape_4 = if_else(LotShape == 4, 1, 0),
+    LandContour_HLS = if_else(LandContour == "HLS", 1, 0),
+    LandContour_Low = if_else(LandContour == "Low", 1, 0),
+    LandContour_Lv1 = if_else(LandContour == "Lv1", 1, 0),
+    Utilities_NoSewa = if_else(Utilities == "NoSewa", 1, 0),
+    LotConfig_CulDSac = if_else(LotConfig == "CulDSac", 1, 0),
+    LotConfig_FR2 = if_else(LotConfig == "FR2", 1, 0),
+    LotConfig_FR3 = if_else(LotConfig == "FR3", 1, 0),
+    LotConfig_Inside = if_else(LotConfig == "Inside", 1, 0),
+    Slope_Mod = if_else(Slope == "Mod", 1, 0),
+    Slope_Sev = if_else(Slope == "Sev", 1, 0),
+    DwellClass_2fmCon = if_else(DwellClass == "2fmCon", 1, 0),
+    DwellClass_Duplex = if_else(DwellClass == "Duplex", 1, 0),
+    DwellClass_Twnhs = if_else(DwellClass == "Twnhs", 1, 0),
+    DwellClass_TwnhsE = if_else(DwellClass == "TwnhsE", 1, 0),
+    CentralAir_Y = if_else(CentralAir == "Y", 1, 0),
+    GarageType_Attchd = if_else(GarageType == "Attchd", 1, 0),
+    GarageType_Basment = if_else(GarageType == "Basment", 1, 0),
+    GarageType_BuiltIn = if_else(GarageType == "BuiltIn", 1, 0),
+    GarageType_CarPort = if_else(GarageType == "CarPort", 1, 0),
+    GarageType_Detchd = if_else(GarageType == "Detchd", 1, 0),
+    PavedDrive_P = if_else(PavedDrive == "P", 1, 0),
+    PavedDrive_Y = if_else(PavedDrive == "Y", 1, 0),
+    OverallQuality_2 = if_else(OverallQuality == 2, 1, 0),
+    OverallQuality_3 = if_else(OverallQuality == 3, 1, 0),
+    OverallQuality_4 = if_else(OverallQuality == 4, 1, 0),
+    OverallQuality_5 = if_else(OverallQuality == 5, 1, 0),
+    OverallQuality_6 = if_else(OverallQuality == 6, 1, 0),
+    OverallQuality_7 = if_else(OverallQuality == 7, 1, 0),
+    OverallQuality_8 = if_else(OverallQuality == 8, 1, 0),
+    OverallQuality_9 = if_else(OverallQuality == 9, 1, 0),
+    OverallQuality_10 = if_else(OverallQuality == 10, 1, 0),
+    OverallCondition_3 = if_else(OverallCondition == 3, 1, 0),
+    OverallCondition_4 = if_else(OverallCondition == 4, 1, 0),
+    OverallCondition_5 = if_else(OverallCondition == 5, 1, 0),
+    OverallCondition_6 = if_else(OverallCondition == 6, 1, 0),
+    OverallCondition_7 = if_else(OverallCondition == 7, 1, 0),
+    OverallCondition_8 = if_else(OverallCondition == 8, 1, 0),
+    OverallCondition_9 = if_else(OverallCondition == 9, 1, 0),
+    ExteriorCondition_Gd = if_else(ExteriorCondition == "Gd", 1, 0),
+    ExteriorCondition_TA = if_else(ExteriorCondition == "TA", 1, 0),
+    BasementCondition_Fa = if_else(BasementCondition == "Fa", 1, 0),
+    BasementCondition_Gd = if_else(BasementCondition == "Gd", 1, 0),
+    BasementCondition_NB = if_else(BasementCondition == "NB", 1, 0),
+    KitchenQuality_Ex = if_else(KitchenQuality == "Ex", 1, 0),
+    KitchenQuality_Fa = if_else(KitchenQuality == "Fa", 1, 0),
+    KitchenQuality_Gd = if_else(KitchenQuality == "Gd", 1, 0)
+  )
+```
+
+```{r}
+not_missing_numerical_vars <- select(df_method1, "YearBuilt", "FullBath", "HalfBath", "BedroomAbvGr", "KitchenAbvGr", "TotalRmsAbvGrd", 
+                         "Fireplaces", "GarageCars", "MoSold", "YrSold", "LotArea", "TotalBSF", "LowQualFinSF", 
+                         "LivingArea", "PoolArea", "OpenPorchSF", "SalePrice")
+```
+
+# Correlation analysis
+```{r}
+correlation_matrix <- round(cor(not_missing_numerical_vars), 4)
+print(correlation_matrix)
+# Filter correlations exceeding a threshold (e.g., 0.7)
+threshold <- 0.6
+high_correlation <- which(correlation_matrix > threshold, arr.ind = TRUE)
+print(high_correlation)
+```
+# Diagrams for high correlation variables
+```{r}
+ggplot(data = not_missing_numerical_vars, aes(x = factor(FullBath), y = LivingArea)) +
+  geom_boxplot() +
+  labs(title = "Box Plot of LivingArea by FullBath Count",
+       x = "FullBath",
+       y = "LivingArea")
+
+ggplot(data = not_missing_numerical_vars, aes(x = factor(BedroomAbvGr), y = TotalRmsAbvGrd)) +
+  geom_boxplot() +
+  labs(title = "Box Plot of TotalRmsAbvGrd by BedroomAbvGr",
+       x = "BedroomAbvGr",
+       y = "TotalRmsAbvGrd")
+
+ggplot(data = not_missing_numerical_vars, aes(x = factor(TotalRmsAbvGrd), y = LivingArea)) +
+  geom_boxplot() +
+  labs(title = "Box Plot of LivingArea by TotalRmsAbvGrd",
+       x = "TotalRmsAbvGrd",
+       y = "LivingArea")
+
+ggplot(data = not_missing_numerical_vars, aes(x = factor(GarageCars), y = SalePrice)) +
+  geom_boxplot() +
+  labs(title = "Box Plot of SalePrice by GarageCars",
+       x = "GarageCars",
+       y = "SalePrice")
+
+ggplot(data = not_missing_numerical_vars, aes(x = SalePrice, y = TotalBSF)) +
+  geom_point() +
+  labs(title = "Scatter Plot of SalePrice and TotalBSF",
+       x = "SalePrice",
+       y = "TotalBSF")
+
+ggplot(data = not_missing_numerical_vars, aes(x = LivingArea, y = SalePrice)) +
+  geom_point() +
+  labs(title = "Scatter Plot of LivingArea and SalePrice",
+       x = "LivingArea",
+       y = "SalePrice")
+```
